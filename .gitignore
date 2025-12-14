@@ -91,3 +91,6 @@ output/
 *.tmp
 *.temp
 *.log
+
+# Files
+/docs
