@@ -6,7 +6,10 @@
       "Bash(python -m py_compile:*)",
       "Bash(Remove-Item -Recurse -Force \"c:\\Users\\Hello\\Documents\\Video-to-PowerPoint\\video_to_powerpoint\")",
       "Bash(Remove-Item -Force \"c:\\Users\\Hello\\Documents\\Video-to-PowerPoint\\video_to_powerpoint.spec\")",
-      "Bash(del /f \"c:\\Users\\Hello\\Documents\\Video-to-PowerPoint\\video_to_powerpoint.spec\")"
+      "Bash(del /f \"c:\\Users\\Hello\\Documents\\Video-to-PowerPoint\\video_to_powerpoint.spec\")",
+      "Bash(Remove-Item -Recurse -Force \"c:\\Users\\Hello\\Documents\\DeckSnag\\venv\")",
+      "Bash(python -m venv:*)",
+      "Bash(\"c:/Users/Hello/Documents/DeckSnag/venv/Scripts/pip.exe\" install:*)"
     ]
   }
 }

@@ -803,7 +803,8 @@ class DeckSnagApp(ctk.CTk):
 
         except Exception as e:
             logger.error(f"Capture error: {e}")
-            self.after(0, lambda: messagebox.showerror("Error", f"Capture failed: {e}"))
+            error_msg = str(e)
+            self.after(0, lambda: messagebox.showerror("Error", f"Capture failed: {error_msg}"))
 
         finally:
             self.after(0, self._capture_finished)
@@ -878,7 +879,8 @@ class DeckSnagApp(ctk.CTk):
 
         except Exception as e:
             logger.error(f"Save error: {e}")
-            self.after(0, lambda: messagebox.showerror("Error", f"Failed to save: {e}"))
+            error_msg = str(e)
+            self.after(0, lambda: messagebox.showerror("Error", f"Failed to save: {error_msg}"))
 
     def _capture_finished(self) -> None:
         """Called when capture is complete."""

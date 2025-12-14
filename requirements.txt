@@ -5,6 +5,10 @@ Pillow>=10.0.0
 python-pptx>=0.6.21
 scikit-image>=0.22.0
 
+# CLIP AI comparison
+sentence-transformers>=2.2.0
+torch>=2.0.0
+
 # GUI
 customtkinter>=5.2.0
 
