@@ -99,15 +99,29 @@ class ImageComparator:
         return img1_resized, img2_resized
 
     def _load_clip_model(self) -> None:
-        """Lazy load the CLIP model (only when first needed)."""
+        """Lazy load the CLIP model (only when first needed).
+
+        The model is cached in the user data directory to avoid
+        re-downloading (~350MB) on each use.
+        """
         if self._clip_model is not None:
             return
 
         try:
             from sentence_transformers import SentenceTransformer
+            from decksnag.config_file import ensure_data_dir
+
+            # Use persistent cache directory
+            cache_dir = ensure_data_dir() / "models"
+            cache_dir.mkdir(parents=True, exist_ok=True)
 
             logger.info("Loading CLIP model (first use, may take a moment)...")
-            self._clip_model = SentenceTransformer("clip-ViT-B-32")
+            logger.debug(f"Model cache directory: {cache_dir}")
+
+            self._clip_model = SentenceTransformer(
+                "clip-ViT-B-32",
+                cache_folder=str(cache_dir),
+            )
             logger.info("CLIP model loaded successfully")
         except ImportError:
             raise ImportError(
